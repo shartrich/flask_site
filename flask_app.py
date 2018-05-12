@@ -46,5 +46,11 @@ def index():
     return redirect(url_for('index'))
 
 
+@app.route("/hello")
+def index_hello():
+    return "Hello World!"
+
+
+
 
 
