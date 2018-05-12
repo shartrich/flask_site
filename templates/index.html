@@ -5,9 +5,7 @@
 		<title>Sean Hartrich</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}"/>
-		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
 
 	<div class="topnav">
@@ -16,22 +14,15 @@
 		<a href="skills.html">Skills</a>
 		<!-- <a href="#projects">Side Projects</a> -->
 		<a href="samples/shartrich resume.pdf" target="_blank">Resume</a>
-		<!-- <a href="contact.html" target="_blank">Contact Me</a> -->
 	</div>
 	
 	<body>
-		<!-- <div class="topnav">
-			<a class="active" href="index.html">Home</a>
-			<a href="#about">About Me</a>
-			<a href="pythonStuff.html">Skills</a>
-			<a href="#projects">Side Projects</a>
-		</div> -->
 
 		<!-- Header -->
 			<section id="header">
 
 				<header>
-					<span class="image avatar"><img src="images/avatar3.jpg" height=128 width=128 alt="" /></span>
+					<span class="image avatar"><img src="{{ url_for('static', filename='assets/images/avater3.jpg') }}" height=128 width=128 alt="" /></span>
 					<h1 id="logo"><a href="#">Sean Hartrich</a></h1>
 					<p>Always thinking outside the box</p>
 				</header>
@@ -40,7 +31,6 @@
 						<li><a href="#one" class="active">About</a></li>
 						<li><a href="#two">Education</a></li>
 						<li><a href="#three">Skills</a></li>
-						<!-- <li><a href="#four">Some pet projects</a></li> -->
 					</ul>
 				</nav>
 				<footer>
@@ -52,7 +42,6 @@
 							<li><a href="https://www.facebook.com/sean.hartrich" class="icon fa-facebook" target="_blank"><span class="label">Facebook</span></a></li>
 							<li><a href="https://www.instagram.com/snhartrich/" class="icon fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>
 							<li><a href="https://github.com/shartrich" class="icon fa-github" target="_blank"><span class="label">Github</span></a></li>
-							<!-- <li><a href="mailto:snhartrich@gmail.com" class="icon fa-envelope" target="_top"><span class="label">Email</span></a></li> -->
 						</ul>
 					</div>
 				</footer>
@@ -72,7 +61,6 @@
 										<h2>Sean Hartrich</h2>
 										<p>Actively seeking New Graduate/Internship roles for a Software Engineering/Data Analyst position in the San Francisco Bay Area.</p>
 									</header>
-									<!-- <p>Actively seeking Software Engineering new graduate or internship roles in the San Francisco Bay Area.</p> -->
 									<p>I will be relocating to San Francisco this upcoming May 2018 and would love to pivot myself into a software engineering role. While most of my professional experience focuses on data analytics and operations research, most of my skills will transfer smoothly into an engineering environment.</p>
 								</div>
 							</section>
@@ -86,15 +74,8 @@
 										<h4>B.S. Industrial and Systems Engineering</h4>
 										<h5 style='text-align:right;display: inline;right:0;'>August 2014 to May 2018</h5>
 									</div>
-
-									<!-- <h5 style='text-align:left;'>Concentration: Economic and Finanical Systems</h5> -->
-
-									<!-- <h5 style='text-align:left;display: inline;'><i>Georgia Institute of Technology - Atlanta, Georgia </i></h5> -->
 									<h5><i>Georgia Institute of Technology - Atlanta, Georgia </i></h5>
-										
-									<!-- <h5><i>Georgia Institute of Technology - Atlanta, Georgia </i></h5>
-									<p style='text-align:right;'>August 2014 to May 2018</p>
-									 -->
+
 								</div>
 							</section>
 							<!-- three -->
@@ -110,55 +91,21 @@
 										<li class="fa-bolt">Shooting lightning bolts like a wizard</li>
 										<li class="fa-users">Secret ninja shadow clone technique</li>
 									</ul>
-									<!-- <a href='pythonStuff.html'><h4 style="color:blue;background-color:red;"">*Click here for an actual comprehensive list of my skills*</h4></a> -->
 									<a href='skills.html'><h4 style="color:red;""><u>*Click here for an actual comprehensive list of my skills*</u></h4></a>
 								</div>
 							</section>
-
-							<!-- Three -->
-							<!-- <section id="four">
-								<div class="container">
-									<h3>Some recent pet projects</h3>
-									<p>My grandma was always telling me "Idle hands are the Devil's playthings". Consequently, I like to keep my mind stimulated with different personal projects here and there. Some recent items include: </p>
-									<div class="features">
-										<article>
-											<iframe id="pym-fivethirtyeight_embed_148" title="How Popular Is Donald Trump?" src="https://projects.fivethirtyeight.com/trump-approval-ratings/promo.html" width="300" height="295" scrolling="no"> </iframe>
-											<div class="thinner">
-												<h4>US Election Voter District Estimators</h4>
-												<p> As a political junkie, I am always deep "in the weeds". I sap up every good podcast, read all the new stories, wait for the next <a href="http://fivethirtyeight.com/" target="_blank">fivethirtyeight.com</a> article, etc. However, when the Cainbridge Analytica scandal roled out, I got pretty frustrated. People who understood neither algorithms nor politics suddenly raced to delete their Facebooks. I thought to myself, "what would an actual useful data analytics election software look like". Then the ideas started flowing and I couldn't keep myself from my computer. </p>
-											</div>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
-											<div class="inner">
-												<h4>Terraformed a small moon</h4>
-												<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer adipiscing ornare amet.</p>
-											</div>
-										</article>
-										<article>
-											
-											<iframe title="Sean's Personal Site" src="https://shartrich.github.io/index.html" width="300" height="295" scrolling="no"></iframe>
-											<div class="thinner">
-												<h4>Making This Personal Site</h4>
-												<p>Have you seen this thing? It's pretty cool. And if you look hard enough you can even find puppy pictures!</p>
-											</div>
-										</article>
-									</div>
-								</div>
-							</section> -->
 
 					</div>
 		</div>	
 
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollzer.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/main.js"></script>
+			<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='js/jquery.scrollzer.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='js/jquery.scrolly.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='js/skel.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='js/util.js') }}"></script>
+			<script src="{{ url_for('static', filename='js/main.js') }}"></script>
 
 	</body>
 </html>
