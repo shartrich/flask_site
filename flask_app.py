@@ -50,6 +50,9 @@ def index():
 def index_hello():
     return "Hello World!"
 
+@app.route("/me")
+def index_hello():
+    return render_template(index.html)
 
 
 
