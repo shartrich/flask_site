@@ -24,7 +24,7 @@
 			<section id="header">
 
 				<header>
-					<span class="image avatar"><img src="assets/images/avatar3.jpg" height=128 width=128 alt="" /></span>
+					<span class="image avatar"><img src="{{url_for('static', filename='assets/images/avatar3.jpg" height=128 width=128 alt="" /></span>
 					<h1 id="logo"><a href="#">Sean Hartrich</a></h1>
 					<p>Always thinking outside the box</p>
 				</header>
@@ -78,7 +78,7 @@
 										<h5>Coldwell Banker Residential Brokerage - Deerfield, IL</h5>
 									<div class="features">
 										<article>
-											<a href="http://www.nrtllc.com/" class="image" target="_blank"><img src="images/CB logo.jpg" alt="" height=200 width=200></a>
+											<a href="http://www.nrtllc.com/" class="image" target="_blank"><img src="{{url_for('static', filename='assets/images/CB logo.jpg')}}" alt="" height=200 width=200></a>
 											<div class="inner">
 												<p>Designed Python report generating platform to automate and customize internal reporting. Developed experience-based, quantitative productivity expectations for 200+ full-time employees (FTEs). Conducted time and motion study to determine best closing procedure practices to revise training protocol. Reduced commission processing staff needs by 15%. Authored ad-hoc reports to senior leadership including CEO and CFO.</p>
 											</div>
@@ -97,7 +97,7 @@
 										<h5>Coldwell Banker Residential Brokerage - Deerfield, IL</h5>
 									<div class="features">
 										<article>
-											<a href="http://www.nrtllc.com/" class="image" target="_blank"><img src="images/CB icon.jpg" alt="" height=200 width=200></a>
+											<a href="http://www.nrtllc.com/" class="image" target="_blank"><img src="{{url_for('static', filename='assets/images/CB icon.jpg')}}" alt="" height=200 width=200></a>
 											<div class="inner">
 												<p>Spearheaded automation for escrow roles using Python and VBA algorithms. Redesigned internal performance tracking and delivered informative, interactive dashboards for multiple KPIs. Restructured and consolidated central processing reporting for all 27 US companies. Engineered predictive analytics model revising expansion recruitment needs. Optimized and implemented staffing resource models for centralization to determine when to hire/train 128 new FTEs. Enhanced forecasting models for seasonal and temporary labor planning.</p>
 											</div>
@@ -116,7 +116,7 @@
 										<h5>U.S. Venture - Appleton, WI</h5>
 									<div class="features">
 										<article>
-											<a href="http://www.usventure.com/" class="image" target="_blank"><img src="images/USV logo.jpg" alt="" height=200 width=200></a>
+											<a href="http://www.usventure.com/" class="image" target="_blank"><img src="{{url_for('static', filename='assets/images/USV logo.jpg')}}" alt="" height=200 width=200></a>
 											<div class="inner">
 												<p>Streamlined weekly and monthly site performance reports with regression analysis. Performed comprehensive analysis of power utilization resulting in significant (~$100k/year) tax savings. Restructured site service protocol and data management for 54 North American locations after conducting a time and motion study. Provided corrective actions for CNG equipment and used quantitative analysis to review changes. Modeled and optimized equipment lubricant and electrical consumption by forecasting demand.</p>
 											</div>
@@ -131,7 +131,7 @@
 									<p>Some of my more in-depth projects from school</p>
 									<div class="features">
 										<article>
-											<a href="https://ntgfreight.com/" target="_blank" class="image"><img src="images/NTG.png" alt="" /></a>
+											<a href="https://ntgfreight.com/" target="_blank" class="image"><img src="{{url_for('static', filename='assets/images/NTG.png')}}" alt="" /></a>
 											<div class="inner">
 												<h4>Senior Design Route Optimizing Software</h4>
 												<p style="display:inline">Two part project for <a href="https://ntgfreight.com/" target="_blank" alt="">Nolan Transportation Group</a>:</p>
@@ -147,21 +147,21 @@
 											</div>
 										</article>
 										<article>
-											<a href="images/informationFlow.png" target="_blank" class="image"><img src="images/informationFlow.png" alt="" /></a>
+											<a href="images/informationFlow.png')}}" target="_blank" class="image"><img src="images/informationFlow.png')}}" alt="" /></a>
 											<div class="inner">
 												<h4>Commercial Trains Relational Database</h4>
 												<p>Used Python and SQL to design and code a functional commercial train network system (similar to Amtrak). Project required a functial GUI with seperate UIs for manager logins, customer logins, and new users withput an account. Had to communicate with database to book new trips, change bookings, add new payment info, etc. Manager client had to return KPIs based on customer activity and revenue reports.</p>
 
 												<nav>
 													<a style="display:block" href="samples/TrainsRelationalDatabaseScript.py" target="_blank">Source Code</a>
-													<a style="display:block" href="images/EER diagram.png" target="_blank">EER Diagram</a>
-													<a style="display:block" href="images/informationFlow.png" target="_blank">Information Flow Diagram</a>
+													<a style="display:block" href="{{url_for('static', filename='assets/images/EER diagram.png')}}" target="_blank">EER Diagram</a>
+													<a style="display:block" href="{{url_for('static', filename='assets/images/informationFlow.png')}}" target="_blank">Information Flow Diagram</a>
 												</nav>
 
 											</div>
 										</article>
 										<article>
-											<a href="images/energyPortfolio.png" target="_blank" class="image"><img src="images/energyPortfolio.png" alt="" /></a>
+											<a href="{{url_for('static', filename='assets/images/energyPortfolio.png')}}" target="_blank" class="image"><img src="images/energyPortfolio.png')}}" alt="" /></a>
 											<div class="inner">
 												<h4>Georgia Optimal Energy Portfolio</h4>
 												<p>Co-developed a model for Georgia energy infrastructure based on emission standards, expected production costs, and load demands. Used Xpress Suite to determine optimal portions of energy sources. Presented findings to 
