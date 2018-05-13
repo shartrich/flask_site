@@ -17,18 +17,13 @@ SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://{username}:{password}@{hostnam
     hostname='shartrich.mysql.pythonanywhere-services.com',
     databasename="shartrich$flask_app_db",
 )
-
 app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
 app.config["SQLALCHEMY_POOL_RECYCLE"] = 299
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-
 db = SQLAlchemy(app)
-
-
 class Comment(db.Model):
 
     __tablename__ = "comments"
-
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String(4096))
 
@@ -50,7 +45,6 @@ def index():
 def index_hello():
     return "Hello World!"
 
-
 @app.route("/aboutMe")
 def me_page():
     return render_template('index.html')
@@ -62,6 +56,8 @@ def exp_page():
 @app.route("/skills")
 def skills_page():
     return render_template('skills.html')
+
+
 
 
 
