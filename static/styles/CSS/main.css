@@ -27,17 +27,7 @@
 		display: -webkit-flex;
 		display: -ms-flex;*/
 		display: flex;
-		/*-moz-flex-direction: row;
-		-webkit-flex-direction: row;
-		-ms-flex-direction: row;*/
 		flex-direction: row;
-/*		-moz-justify-content: space-between;
-		-webkit-justify-content: space-between;
-		-ms-justify-content: space-between;
-		justify-content: space-between;*/
-		/*background: var(--main-bg-color);*/
-		/*color: #d1f1e9;*/
-		/*height: 100%;*/
 		width: 100%;
 		/*text-align: center;*/
 

@@ -51,9 +51,17 @@ def index_hello():
     return "Hello World!"
 
 
-@app.route("/me")
+@app.route("/aboutMe")
 def me_page():
     return render_template('index.html')
+
+@app.route("/pastExp")
+def me_page():
+    return render_template('pastExp.html')
+
+@app.route("/skills")
+def me_page():
+    return render_template('skills.html')
 
 
 
