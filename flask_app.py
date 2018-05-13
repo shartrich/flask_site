@@ -41,7 +41,7 @@ def index():
     return redirect(url_for('index'))
 
 #header_diretions = [['', 'Home'], ['', 'Past Experience'], ['', 'Skills']]
-header_diretions = {'Home': ['', 'aboutMe'], 'Past Experience': ['', 'pastExp'], 'Skills': ['', '/skills']}
+header_diretions = {'Home': ['', '/aboutMe'], 'Past Experience': ['', '/pastExp'], 'Skills': ['', '/skills']}
 
 @app.route("/hello")
 def index_hello():
