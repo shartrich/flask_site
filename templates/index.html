@@ -8,13 +8,7 @@
 		<link rel="stylesheet" href="{{ url_for('static', filename='styles/CSS/main.css') }}"/>
 	</head>
 
-	<div class="topnav">
-		<a class="active" href="/aboutMe">Home</a>
-		<a href="/pastExp">Past Experience</a>
-		<a href="/skills">Skills</a>
-		<!-- <a href="#projects">Side Projects</a> -->
-		<a href="samples/shartrich resume.pdf" target="_blank">Resume</a>
-	</div>
+	{% include "header.html" %}
 	
 	<body>
 		<!-- Header -->

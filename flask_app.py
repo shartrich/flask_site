@@ -45,6 +45,12 @@ index_header = {'Home': ['active', '/aboutMe'], 'Past Experience': ['', '/pastEx
 experience_header = {'Home': ['', '/aboutMe'], 'Past Experience': ['active', '/pastExp'], 'Skills': ['', '/skills']}
 skills_header = {'Home': ['', '/aboutMe'], 'Past Experience': ['', '/pastExp'], 'Skills': ['active', '/skills']}
 
+side_bar_index = {'About': ["#one", "active"], 'Python Libraries': ['#two', ''], 'Software': ['#three', ''], 'Extras': ['#four', '']}
+side_base_past_exp = {'Data Analytics Specialist': ["#one", "active"], 'Operations Data Analyst': ['#two', ''], 'Operations Data Analyst': ['#three', ''], 'Past Academic Projects': ['#four', '']}
+side_base_skills = {'Coding': ["#one", "active"], 'Education': ['#two', ''], 'Skills': ['#three', '']}
+
+
+
 @app.route("/hello")
 def index_hello():
     return "Hello World!"
@@ -52,17 +58,17 @@ def index_hello():
 @app.route("/aboutMe")
 def me_page():
     index_header
-    return render_template('index.html', header_info = header_diretions)
+    return render_template('index.html', header_info = header_diretions, side_bar = side_bar_index)
 
 @app.route("/pastExp")
 def exp_page():
     experience_header
-    return render_template('pastExp.html', header_info = header_diretions)
+    return render_template('pastExp.html', header_info = header_diretions, side_bar = side_base_past_exp)
 
 @app.route("/skills")
 def skills_page():
     skills_header
-    return render_template('skills.html', header_info = header_diretions)
+    return render_template('skills.html', header_info = header_diretions, side_bar = side_base_skills)
 
 
 

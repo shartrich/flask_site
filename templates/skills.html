@@ -5,58 +5,16 @@
 		<title>Sean Hartrich</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="{{url_for('static', filename='styles/CSS/main.css') }}" />
-		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 	</head>
 
 
 	{% include "header.html" %}
 
-
 	<body>
 
 		<!-- Header -->
-			<section id="header">
-				<header>
-					<span class="image avatar"><img src="{{url_for('static', filename='assets/images/avatar3.jpg')}}" height=128 width=128 alt="" /></span>
-					<h1 id="logo"><a href="#">Sean Hartrich</a></h1>
-					<p>Always thinking outside the box</p>
-				</header>
-				<nav id="nav">
-					<ul>
-						<li><a href="#one" class="active">Coding</a></li>
-						<li><a href="#two">Python Libraries</a></li>
-						<li><a href="#three">Software</a></li>
-						<li><a href="#four">Extras</a></li>
-					</ul>
-				</nav>
-				<footer>
-					<div style="position:bottom;">
-						
-						<span style="font-size:13pt;text-align:center">847-650-4959 | snhartrich@gmail.com</span>
-						<ul class="icons">
-							<li><a href="https://twitter.com/snhartrich" class="icon fa-twitter" target="_blank"><span class="label">Twitter</span></a></li>
-							<li><a href="https://www.facebook.com/sean.hartrich" class="icon fa-facebook" target="_blank"><span class="label">Facebook</span></a></li>
-							<li><a href="https://www.instagram.com/snhartrich/" class="icon fa-instagram" target="_blank"><span class="label">Instagram</span></a></li>
-							<li><a href="https://github.com/shartrich" class="icon fa-github" target="_blank"><span class="label">Github</span></a></li>
-						</ul>
-					</div>
-				</footer>
-			</section>
-
-			<div id="wrapper">
-
-				<!-- Main -->
-					<div id="main">
-
-						<section>
-							<div class="container">
-								<header class="major">
-									<h2 style='display: inline;'>Skills & Proficiencies</h2>
-								</header>
-							</div>
-						</section>
+			{% include "side_bar_menu.html" %}
 
 
 						<!-- One -->
