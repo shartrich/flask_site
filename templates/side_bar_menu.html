@@ -6,8 +6,8 @@
     </header>
     <nav id="nav">
         <ul>
-            {% for key, value in side_bar.items() %}
-                <li><a href='{{ value[0] }}' class='{{ value[1] }}'>{{ key }}</a></li>
+            {% for row in side_bar %}
+                <li><a href='{{ row[1] }}' class='{{ row[2] }}'>{{ row[0] }}</a></li>
             {% endfor %}
         </ul>
     </nav>

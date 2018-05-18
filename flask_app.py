@@ -45,9 +45,13 @@ index_header = {'Home': ['active', '/aboutMe'], 'Past Experience': ['', '/pastEx
 experience_header = {'Home': ['', '/aboutMe'], 'Past Experience': ['active', '/pastExp'], 'Skills': ['', '/skills']}
 skills_header = {'Home': ['', '/aboutMe'], 'Past Experience': ['', '/pastExp'], 'Skills': ['active', '/skills']}
 
-side_bar_index = {'About': ["#one", "active"], 'Python Libraries': ['#two', ''], 'Software': ['#three', ''], 'Extras': ['#four', '']}
-side_bar_past_exp = {'Data Analytics Specialist': ["#one", "active"], 'Operations Data Analyst': ['#two', ''], 'Operations Analyst': ['#three', ''], 'Past Academic Projects': ['#four', '']}
-side_bar_skills = {'Coding': ["#one", "active"], 'Education': ['#two', ''], 'Skills': ['#three', '']}
+# side_bar_skills = {'Coding': ["#one", "active"], 'Python Libraries': ['#two', ''], 'Software': ['#three', ''], 'Extras': ['#four', '']}
+# side_bar_past_exp = {'Data Analytics Specialist': ["#one", "active"], 'Operations Data Analyst': ['#two', ''], 'Operations Analyst': ['#three', ''], 'Past Academic Projects': ['#four', '']}
+# side_bar_index = {'About': ["#one", "active"], 'Education': ['#two', ''], 'Skills': ['#three', '']}
+
+side_bar_skills = [['Coding', "#one", "active"], ['Python Libraries', '#two', ''], ['Software', '#three', ''], ['Extras', '#four', '']]
+side_bar_past_exp = [['Data Analytics Specialist', "#one", "active"], ['Operations Data Analyst', '#two', ''], ['Operations Analyst', '#three', ''], ['Past Academic Projects', '#four', '']]
+side_bar_index = [['About', "#one", "active"], ['Education', '#two', ''], ['Skills', '#three', '']]
 
 
 
