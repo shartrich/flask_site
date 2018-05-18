@@ -14,9 +14,9 @@
 
 	<div class="topnav">
 
-	    {% for key, value in header_info.iteritems() %}
+	    {% for key, value in header_info.items() %}
 
-	    <a class={{ value[0] }} href= {{ value[1] }} >{{ key }}</a>
+	    	<a class={{ value[0] }} href= {{ value[1] }} >{{ key }}</a>
 	    
 	    {% endfor %}
 
