@@ -40,10 +40,10 @@ def index():
     db.session.commit()
     return redirect(url_for('index'))
 
-#header_diretions = [['', 'Home'], ['', 'Past Experience'], ['', 'Skills']]
-header_diretions = {'Home': ['', '/aboutMe'], 'Past Experience': ['', '/pastExp'], 'Skills': ['', '/skills']}
-#header_diretions = {'Home': ('', '/aboutMe'), 'Past Experience': ('', '/pastExp'), 'Skills': ('', '/skills')}
-
+#header_diretions = {'Home': ['', '/aboutMe'], 'Past Experience': ['', '/pastExp'], 'Skills': ['', '/skills']}
+index_header = {'Home': ['active', '/aboutMe'], 'Past Experience': ['', '/pastExp'], 'Skills': ['', '/skills']}
+experience_header = {'Home': ['', '/aboutMe'], 'Past Experience': ['active', '/pastExp'], 'Skills': ['', '/skills']}
+skills_header = {'Home': ['', '/aboutMe'], 'Past Experience': ['', '/pastExp'], 'Skills': ['active', '/skills']}
 
 @app.route("/hello")
 def index_hello():
@@ -51,20 +51,17 @@ def index_hello():
 
 @app.route("/aboutMe")
 def me_page():
-    header_diretions = {'Home': ['', '/aboutMe'], 'Past Experience': ['', '/pastExp'], 'Skills': ['', '/skills']}
-    header_diretions['Home'][0] = 'active' 
+    index_header
     return render_template('index.html', header_info = header_diretions)
 
 @app.route("/pastExp")
 def exp_page():
-    header_diretions = {'Home': ['', '/aboutMe'], 'Past Experience': ['', '/pastExp'], 'Skills': ['', '/skills']}
-    header_diretions['Past Experience'][0] = 'active'
+    experience_header
     return render_template('pastExp.html', header_info = header_diretions)
 
 @app.route("/skills")
 def skills_page():
-    header_diretions = {'Home': ['', '/aboutMe'], 'Past Experience': ['', '/pastExp'], 'Skills': ['', '/skills']}
-    header_diretions['Skills'][0] = 'active'
+    skills_header
     return render_template('skills.html', header_info = header_diretions)
 
 
