@@ -51,16 +51,19 @@ def index_hello():
 
 @app.route("/aboutMe")
 def me_page():
+    header_diretions = {'Home': ['', '/aboutMe'], 'Past Experience': ['', '/pastExp'], 'Skills': ['', '/skills']}
     header_diretions['Home'][0] = 'active' 
     return render_template('index.html', header_info = header_diretions)
 
 @app.route("/pastExp")
 def exp_page():
+    header_diretions = {'Home': ['', '/aboutMe'], 'Past Experience': ['', '/pastExp'], 'Skills': ['', '/skills']}
     header_diretions['Past Experience'][0] = 'active'
     return render_template('pastExp.html', header_info = header_diretions)
 
 @app.route("/skills")
 def skills_page():
+    header_diretions = {'Home': ['', '/aboutMe'], 'Past Experience': ['', '/pastExp'], 'Skills': ['', '/skills']}
     header_diretions['Skills'][0] = 'active'
     return render_template('skills.html', header_info = header_diretions)
 
