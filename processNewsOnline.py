@@ -32,7 +32,7 @@ def run_main():
 
     #adjust if change directory info 
     #copyfile('/home/shartrich/DataMining/data/news.csv', '/static/Project Files/news.csv')
-    copyfile('/home/shartrich/DataMining/data/news.csv', '/static/Project Files/news.csv')
+    copyfile('/home/shartrich/DataMining/data/news.csv', 'static/Project Files/news.csv')
 
     #print('Running')
 
@@ -84,7 +84,7 @@ def run_main():
         counter = Counter(alltokens)
         return counter.most_common(10)
 
-    data = pd.read_csv('/static/Project Files/news.csv')
+    data = pd.read_csv('static/Project Files/news.csv')
     data = data[~data['description'].isnull()]
     #data = data.fillna('')
     data = data.drop_duplicates('description')
