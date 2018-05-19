@@ -100,7 +100,7 @@ def projects_page():
     return render_template('sideProjects.html', header_info = side_projects_header, side_bar = side_bar_projects)
 
 
-@app.route("/project1")
+@app.route("/project")
 def projects_page():
     return render_template('news_bokeh.html', header_info = misc_page_header, side_bar = side_bar_projects)
 
