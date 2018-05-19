@@ -1,7 +1,7 @@
 from flask import Flask, redirect, render_template, request, url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-from apscheduler.schedulers import Scheduler
+from apscheduler.scheduler import Scheduler
 import atexit
 
 #imports to show project 1
