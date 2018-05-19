@@ -41,18 +41,19 @@ def index():
     return redirect(url_for('index'))
 
 #header_diretions = {'Home': ['', '/aboutMe'], 'Past Experience': ['', '/pastExp'], 'Skills': ['', '/skills']}
-index_header = {'Home': ['active', '/aboutMe'], 'Past Experience': ['', '/pastExp'], 'Skills': ['', '/skills']}
-experience_header = {'Home': ['', '/aboutMe'], 'Past Experience': ['active', '/pastExp'], 'Skills': ['', '/skills']}
-skills_header = {'Home': ['', '/aboutMe'], 'Past Experience': ['', '/pastExp'], 'Skills': ['active', '/skills']}
+index_header = {'Home': ['active', '/aboutMe'], 'Past Experience': ['', '/pastExperience'], 'Skills': ['', '/skills']}
+experience_header = {'Home': ['', '/aboutMe'], 'Past Experience': ['active', '/pastExperience'], 'Skills': ['', '/skills']}
+skills_header = {'Home': ['', '/aboutMe'], 'Past Experience': ['', '/pastExperience'], 'Skills': ['active', '/skills']}
+side_projects_header = {'Home': ['', '/aboutMe'], 'Past Experience': ['', '/pastExperience'], 'Skills': ['', '/skills'], 'Side Projects': ['active', '/sideProjects']}
 
 # side_bar_skills = {'Coding': ["#one", "active"], 'Python Libraries': ['#two', ''], 'Software': ['#three', ''], 'Extras': ['#four', '']}
 # side_bar_past_exp = {'Data Analytics Specialist': ["#one", "active"], 'Operations Data Analyst': ['#two', ''], 'Operations Analyst': ['#three', ''], 'Past Academic Projects': ['#four', '']}
 # side_bar_index = {'About': ["#one", "active"], 'Education': ['#two', ''], 'Skills': ['#three', '']}
 
-side_bar_skills = [['Coding', "#one", "active"], ['Python Libraries', '#two', ''], ['Software', '#three', ''], ['Extras', '#four', '']]
-side_bar_past_exp = [['Data Analytics Specialist', "#one", "active"], ['Operations Data Analyst', '#two', ''], ['Operations Analyst', '#three', ''], ['Past Academic Projects', '#four', '']]
 side_bar_index = [['About', "#one", "active"], ['Education', '#two', ''], ['Skills', '#three', '']]
-
+side_bar_past_exp = [['Data Analytics Specialist', "#one", "active"], ['Operations Data Analyst', '#two', ''], ['Operations Analyst', '#three', ''], ['Past Academic Projects', '#four', '']]
+side_bar_skills = [['Coding', "#one", "active"], ['Python Libraries', '#two', ''], ['Software', '#three', ''], ['Extras', '#four', '']]
+side_bar_projects = [['Tracking the News'"#one", "active"]]
 
 
 @app.route("/hello")
@@ -63,13 +64,17 @@ def index_hello():
 def me_page():
     return render_template('index.html', header_info = index_header, side_bar = side_bar_index)
 
-@app.route("/pastExp")
+@app.route("/pastExperience")
 def exp_page():
     return render_template('pastExp.html', header_info = experience_header, side_bar = side_bar_past_exp)
 
 @app.route("/skills")
 def skills_page():
     return render_template('skills.html', header_info = skills_header, side_bar = side_bar_skills)
+
+@app.route("/sideProjects")
+def projects_page():
+    return render_template('sideProjects.html', header_info = side_projects_header, side_bar = side_bar_projects)
 
 
 
