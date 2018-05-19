@@ -66,7 +66,7 @@ def me_page():
 
 @app.route("/pastExperience")
 def exp_page():
-    return render_template('pastExp.html', header_info = experience_header, side_bar = side_bar_past_exp)
+    return render_template('pastExperience.html', header_info = experience_header, side_bar = side_bar_past_exp)
 
 @app.route("/skills")
 def skills_page():
