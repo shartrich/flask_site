@@ -104,7 +104,10 @@ def run_main():
     data.reset_index(inplace=True, drop=True)
 
     #data['description'] = data['description'].map(lambda d: str(d.decode('utf-8')))
-    data['tokens'] = data['description'].progress_map(lambda d: tokenizer(d))
+    #data['tokens'] = data['description'].progress_map(lambda d: tokenizer(d))
+    data['tokens'] = data['description'].apply(lambda d: tokenizer(d))
+
+
 
     ##for descripition, tokens in zip(data['description'].head(5), data['tokens'].head(5)):
     ##    print('description:', descripition)
@@ -134,19 +137,16 @@ def run_main():
 
     #plt.show()
 
-    from wordcloud import WordCloud
-
-    def plot_word_cloud(terms):
-        text = terms.index
-        text = ' '.join(list(text))
-        # lower max_font_size
-        wordcloud = WordCloud(max_font_size=40).generate(text)
-        plt.figure(figsize=(25, 25))
-        plt.imshow(wordcloud, interpolation="bilinear")
-        plt.axis("off")
-        #plt.show()
-
-
+    # from wordcloud import WordCloud
+    # def plot_word_cloud(terms):
+    #     text = terms.index
+    #     text = ' '.join(list(text))
+    #     # lower max_font_size
+    #     wordcloud = WordCloud(max_font_size=40).generate(text)
+    #     plt.figure(figsize=(25, 25))
+    #     plt.imshow(wordcloud, interpolation="bilinear")
+    #     plt.axis("off")
+    #     plt.show()
 
     #low impact generic words
     #plot_word_cloud(tfidf.sort_values(by=['tfidf'], ascending=True).head(40))
@@ -179,11 +179,11 @@ def run_main():
 
 
     groups = tsne_tfidf_df.groupby('category')
-    fig, ax = plt.subplots(figsize=(15, 10))
-    ax.margins(0.05) # Optional, just adds 5% padding to the autoscaling
-    for name, group in groups:
-        ax.plot(group.x, group.y, marker='o', linestyle='', label=name)
-    ax.legend()
+    # fig, ax = plt.subplots(figsize=(15, 10))
+    # ax.margins(0.05) # Optional, just adds 5% padding to the autoscaling
+    # for name, group in groups:
+    #     ax.plot(group.x, group.y, marker='o', linestyle='', label=name)
+    # ax.legend()
     #plt.show()
 
 
@@ -224,7 +224,7 @@ def run_main():
 
     distorsions = []
     sil_scores = []
-    k_max = 80
+    k_max = 40
     for k in range(2, k_max):
         kmeans_model = MiniBatchKMeans(n_clusters=k, init='k-means++', n_init=1, random_state=42,
                              init_size=1000, verbose=False, max_iter=1000)
@@ -235,17 +235,17 @@ def run_main():
 
 
 
-    f, (ax1, ax2) = plt.subplots(2, 1, sharex=True, figsize=(15, 10))
+    # f, (ax1, ax2) = plt.subplots(2, 1, sharex=True, figsize=(15, 10))
 
-    ax1.plot(range(2, k_max), distorsions)
-    ax1.set_title('Distorsion vs num of clusters')
-    ax1.grid(True)
+    # ax1.plot(range(2, k_max), distorsions)
+    # ax1.set_title('Distorsion vs num of clusters')
+    # ax1.grid(True)
 
-    ax2.plot(range(2, k_max), sil_scores)
-    ax2.set_title('Silhouette score vs num of clusters')
-    ax2.grid(True)
+    # ax2.plot(range(2, k_max), sil_scores)
+    # ax2.set_title('Silhouette score vs num of clusters')
+    # ax2.grid(True)
 
-    num_clusters = 80
+    num_clusters = 40
     kmeans_model = MiniBatchKMeans(n_clusters=num_clusters, init='k-means++', n_init=1, random_state=42,
                              init_size=1000, batch_size=1000, verbose=False, max_iter=1000, )
     kmeans = kmeans_model.fit(vz)
@@ -293,9 +293,6 @@ def run_main():
         kmeans_df = pd.read_csv('static/Project Files/tsne_kmeans.csv')
         kmeans_df['cluster'] = kmeans_df['cluster'].map(str)
 
-
-    #plt.show()
-
     reset_output()
     output_notebook()
     plot_kmeans = bp.figure(plot_width=700, plot_height=600, title="KMeans clustering of the news",
@@ -314,7 +311,7 @@ def run_main():
 
     #display(HTML('<div style="margin:auto">'+div+'</div>'))
     output_file("static/Project Files/test2.html")
-    #show(plot_kmeans)
+    show(plot_kmeans)
     #plt.show()
 
     #print(data.shape)
