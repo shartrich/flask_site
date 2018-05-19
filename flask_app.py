@@ -2,6 +2,7 @@ from flask import Flask, redirect, render_template, request, url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from apscheduler.schedulers import Scheduler
+import atexit
 
 #imports to show project 1
 import processNewsOnline as project1
