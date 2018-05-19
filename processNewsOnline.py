@@ -31,7 +31,8 @@ def run_main():
     print('Running at', str(datetime.today()))
 
     #adjust if change directory info 
-    copyfile('/home/shartrich/DataMining/data/news.csv', '/static/Project Files/news.csv')
+    #copyfile('/home/shartrich/DataMining/data/news.csv', '/static/Project Files/news.csv')
+    copyfile('/home/shartrich/DataMining/data/news.csv', '/static/Project Files/')
 
     #print('Running')
 
