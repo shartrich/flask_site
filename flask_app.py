@@ -96,13 +96,14 @@ def skills_page():
     return render_template('skills.html', header_info = skills_header, side_bar = side_bar_skills)
 
 @app.route("/sideProjects")
-def projects_page():
+def projects_page_main():
     return render_template('sideProjects.html', header_info = side_projects_header, side_bar = side_bar_projects)
 
 
-@app.route("/project")
-def projects_page():
-    return render_template('news_bokeh.html', header_info = misc_page_header, side_bar = side_bar_projects)
+@app.route("/project1")
+def projects_page_1():
+    #return render_template('news_bokeh.html', header_info = misc_page_header, side_bar = side_bar_projects)
+    return render_template('/home/shartrich/mysite/static/Project Files/test2.html', header_info = misc_page_header, side_bar = side_bar_projects)
 
 
 
