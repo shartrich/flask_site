@@ -314,7 +314,7 @@ def run_main():
     show(plot_kmeans)
     
 
-    copyfile('/home/shartrich/mysite/templates/bokeh plot.html', '/home/shartrich/mysite/static/Project Files/test2.html')
+    copyfile('/home/shartrich/mysite/templates/news bokeh.html', '/home/shartrich/mysite/static/Project Files/test2.html')
 
 
 
