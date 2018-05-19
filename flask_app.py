@@ -41,7 +41,7 @@ cron.start()
 @cron.interval_schedule(hours=1)
 def job_function():
     #project1.run_main()
-    print('Test:', str(datetime.today())
+    print('Test:', str(datetime.today()))
 
 # Shutdown your cron thread if the web process is stopped
 atexit.register(lambda: cron.shutdown(wait=False))
