@@ -1,9 +1,6 @@
 from flask import Flask, redirect, render_template, request, url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-import atexit
-from apscheduler.schedulers.background import BackgroundScheduler
-from apscheduler.triggers.interval import IntervalTrigger
 
 #imports to show project 1
 import processNewsOnline as project1
@@ -36,21 +33,21 @@ class Comment(db.Model):
 
 
 
-
-
-scheduler = BackgroundScheduler()
-scheduler.start()
-scheduler.add_job(
-    func=print_date_time,
-    trigger=IntervalTrigger(seconds=5),
-    id='printing_job',
-    name='Print date and time every five seconds',
-    replace_existing=True)
-# Shut down the scheduler when exiting the app
-atexit.register(lambda: scheduler.shutdown())
-
-def print_date_time():
-    print('Testing', str(dateitme.today()))
+# from apscheduler.schedulers.background import BackgroundScheduler
+# from apscheduler.triggers.interval import IntervalTrigger
+# import atexit
+# scheduler = BackgroundScheduler()
+# scheduler.start()
+# scheduler.add_job(
+#     func=print_date_time,
+#     trigger=IntervalTrigger(seconds=5),
+#     id='printing_job',
+#     name='Print date and time every five seconds',
+#     replace_existing=True)
+# # Shut down the scheduler when exiting the app
+# atexit.register(lambda: scheduler.shutdown())
+# def print_date_time():
+#     print('Testing', str(dateitme.today()))
 
 
 
