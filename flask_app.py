@@ -76,7 +76,7 @@ misc_page_header = {'Home': ['', '/aboutMe'], 'Past Experience': ['', '/pastExpe
 side_bar_index = [['About', "#one", "active"], ['Education', '#two', ''], ['Skills', '#three', '']]
 side_bar_past_exp = [['Data Analytics Specialist', "#one", "active"], ['Operations Data Analyst', '#two', ''], ['Operations Analyst', '#three', ''], ['Past Academic Projects', '#four', '']]
 side_bar_skills = [['Coding', "#one", "active"], ['Python Libraries', '#two', ''], ['Software', '#three', ''], ['Extras', '#four', '']]
-side_bar_projects = [['Tracking the News'"#one", "active"]]
+side_bar_projects = [['Tracking the News', "#one", "active"]]
 
 
 @app.route("/hello")
