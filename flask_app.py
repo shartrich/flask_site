@@ -1,9 +1,10 @@
 from flask import Flask, redirect, render_template, request, url_for
 from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
+from apscheduler.schedulers import Scheduler
 
 #imports to show project 1
 import processNewsOnline as project1
-from apscheduler.scheduler import Scheduler
 
 
 #import pymysql
@@ -33,15 +34,13 @@ class Comment(db.Model):
 
 
 
-cron = Scheduler(daemon=True)
 # Explicitly kick off the background thread
+cron = Scheduler(daemon=True)
 cron.start()
-
-@cron.interval_schedule(hours=6)
+@cron.interval_schedule(hours=1)
 def job_function():
-    # Do your work here
-    project1.run_main()
-    print('Ran Display Service:')
+    #project1.run_main()
+    print('Test:', str(datetime.today())
 
 # Shutdown your cron thread if the web process is stopped
 atexit.register(lambda: cron.shutdown(wait=False))
