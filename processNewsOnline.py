@@ -29,7 +29,7 @@ from datetime import datetime
 
 def run_main():
     print('Running at', str(datetime.today()))
-    
+
     #adjust if change directory info 
     copyfile('/home/shartrich/DataMining/data/news.csv', '/static/Project Files/news.csv')
 
@@ -90,7 +90,7 @@ def run_main():
 
     stop_words = []
 
-    with f = open('static/Project Files/stopwords.txt', 'r'):
+    with open('static/Project Files/stopwords.txt', 'r') as f:
         for l in f.readlines():
             stop_words.append(l.replace('\n', ''))
         
