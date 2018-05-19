@@ -2,7 +2,7 @@ from flask import Flask, redirect, render_template, request, url_for
 from flask_sqlalchemy import SQLAlchemy
 
 #imports to show project 1
-import ProcessNewsOnline as project1
+import processNewsOnline as project1
 from apscheduler.scheduler import Scheduler
 
 
