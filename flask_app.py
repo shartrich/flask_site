@@ -102,7 +102,7 @@ def projects_page_main():
 
 @app.route("/project1")
 def projects_page_1():
-    return render_template('news_bokeh.html', header_info = misc_page_header, side_bar = side_bar_projects)
+    return render_template('news bokeh.html', header_info = misc_page_header, side_bar = side_bar_projects)
     #return render_template('/home/shartrich/mysite/static/Project Files/test2.html', header_info = misc_page_header, side_bar = side_bar_projects)
 
 
