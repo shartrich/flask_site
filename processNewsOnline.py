@@ -32,7 +32,7 @@ def run_main():
 
     #adjust if change directory info 
     #copyfile('/home/shartrich/DataMining/data/news.csv', '/static/Project Files/news.csv')
-    copyfile('/home/shartrich/DataMining/data/news.csv', '/static/Project Files/')
+    copyfile('/home/shartrich/DataMining/data/news.csv', '/static/Project Files/news.csv')
 
     #print('Running')
 
