@@ -30,7 +30,7 @@ from datetime import datetime
 def run_main():
     print('Running at', str(datetime.today()))
 
-    #adjust if change directory info 
+    #adjust if change directory info
     #copyfile('/home/shartrich/DataMining/data/news.csv', '/static/Project Files/news.csv')
     copyfile('/home/shartrich/DataMining/data/news.csv', 'static/Project Files/news.csv')
 
@@ -44,7 +44,7 @@ def run_main():
             return string
         return ''.join([i if ord(i) < 128 else ' ' for i in string])
 
-    def _removeNonAscii(s): 
+    def _removeNonAscii(s):
         return "".join(i for i in s if ord(i)<128)
 
     def clean_text(text):
@@ -62,7 +62,7 @@ def run_main():
         text = re.sub(r'\W+', ' ', text)
         text = re.sub(r'\s+', ' ', text)
         text = re.sub(r"\\", "", text)
-        text = re.sub(r"\'", "", text)    
+        text = re.sub(r"\'", "", text)
         text = re.sub(r"\"", "", text)
         text = re.sub('[^a-zA-Z ?!]+', '', text)
         text = _removeNonAscii(text)
@@ -70,7 +70,7 @@ def run_main():
         return text
 
     def tokenizer(text):
-        text = clean_text(text)    
+        text = clean_text(text)
         tokens = [word_tokenize(sent) for sent in sent_tokenize(text)]
         tokens = list(reduce(lambda x,y: x+y, tokens))
         tokens = list(filter(lambda token: token not in (stop_words + list(punctuation)) , tokens))
@@ -84,7 +84,8 @@ def run_main():
         counter = Counter(alltokens)
         return counter.most_common(10)
 
-    data = pd.read_csv('static/Project Files/news.csv')
+    #data = pd.read_csv('static/Project Files/news.csv')
+    data = pd.read_csv('/home/shartrich/mysite/static/Project Files/news.csv')
     data = data[~data['description'].isnull()]
     #data = data.fillna('')
     data = data.drop_duplicates('description')
@@ -94,7 +95,7 @@ def run_main():
     with open('static/Project Files/stopwords.txt', 'r') as f:
         for l in f.readlines():
             stop_words.append(l.replace('\n', ''))
-        
+
         additional_stop_words = ['t', 'will']
         stop_words += additional_stop_words
 
@@ -203,7 +204,7 @@ def run_main():
     palette = d3['Category10'][len(tsne_tfidf_df['category'].unique())]
     color_map = bmo.CategoricalColorMapper(factors=tsne_tfidf_df['category'].map(str).unique(), palette=palette)
 
-    plot_tfidf.scatter(x='x', y='y', color={'field': 'category', 'transform': color_map}, 
+    plot_tfidf.scatter(x='x', y='y', color={'field': 'category', 'transform': color_map},
                        legend='category', source=tsne_tfidf_df)
     hover = plot_tfidf.select(dict(type=HoverTool))
     hover.tooltips={"description": "@description", "category":"@category"}
@@ -225,7 +226,7 @@ def run_main():
     sil_scores = []
     k_max = 80
     for k in range(2, k_max):
-        kmeans_model = MiniBatchKMeans(n_clusters=k, init='k-means++', n_init=1, random_state=42,  
+        kmeans_model = MiniBatchKMeans(n_clusters=k, init='k-means++', n_init=1, random_state=42,
                              init_size=1000, verbose=False, max_iter=1000)
         kmeans_model.fit(vz)
         sil_score = silhouette_score(vz, kmeans_model.labels_)
@@ -245,7 +246,7 @@ def run_main():
     ax2.grid(True)
 
     num_clusters = 80
-    kmeans_model = MiniBatchKMeans(n_clusters=num_clusters, init='k-means++', n_init=1, random_state=42,                       
+    kmeans_model = MiniBatchKMeans(n_clusters=num_clusters, init='k-means++', n_init=1, random_state=42,
                              init_size=1000, batch_size=1000, verbose=False, max_iter=1000, )
     kmeans = kmeans_model.fit(vz)
     kmeans_clusters = kmeans.predict(vz)
@@ -253,7 +254,7 @@ def run_main():
 
     ##for (i, desc),category in zip(enumerate(data.description),data['category']):
     ##    if(i < 5):
-    ##        print("Cluster " + str(kmeans_clusters[i]) + ": " + desc + 
+    ##        print("Cluster " + str(kmeans_clusters[i]) + ": " + desc +
     ##              "(distance: " + str(kmeans_distances[i][kmeans_clusters[i]]) + ")")
     ##        print('category: ',category)
     ##        print('---')
@@ -268,7 +269,7 @@ def run_main():
             topic_keywords.append(terms[j])
         all_keywords.append(topic_keywords)
 
-    keywords_df = pd.DataFrame(index=['topic_{0}'.format(i) for i in range(num_clusters)], 
+    keywords_df = pd.DataFrame(index=['topic_{0}'.format(i) for i in range(num_clusters)],
                                columns=['keyword_{0}'.format(i) for i in range(10)],
                                data=all_keywords)
 
@@ -301,11 +302,11 @@ def run_main():
         tools="pan,wheel_zoom,box_zoom,reset,hover,previewsave",
         x_axis_type=None, y_axis_type=None, min_border=1)
 
-    palette = d3['Category20'][20] + d3['Category20b'][20] 
+    palette = d3['Category20'][20] + d3['Category20b'][20]
     color_map = bmo.CategoricalColorMapper(factors=kmeans_df['cluster'].unique(), palette=palette)
 
-    plot_kmeans.scatter('x', 'y', source=kmeans_df, 
-                        color={'field': 'cluster', 'transform': color_map}, 
+    plot_kmeans.scatter('x', 'y', source=kmeans_df,
+                        color={'field': 'cluster', 'transform': color_map},
                         legend='cluster')
     hover = plot_kmeans.select(dict(type=HoverTool))
     hover.tooltips={"description": "@description", "cluster": "@cluster", "category": "@category"}
