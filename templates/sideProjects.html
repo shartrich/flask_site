@@ -29,25 +29,22 @@
                                 <div class="container">
                                     <header class="major">
                                         <h2 style='display: inline;'>Side Projects</h2>
-                                        <p>Always trying to keep myself busy trying out new skills, I have outlined some recent endeavors below.</p>
                                     </header>
-                                    
                                 </div>
                             </section>
 
                             <section id="one">
                                 <div class="container">
                                     <div style='display:flex;justify-content: space-between;'>
-                                        <h4>Data Analytics Specialist</h4>
-                                        <h5 style='text-align:right;display: inline;right:0;'>August 2017 to June 2018</h5>
+                                        <h3>Current Events Headline Analysis</h4>
                                     </div>
 
-                                        <h5>Coldwell Banker Residential Brokerage - Deerfield, IL</h5>
+                                        <h5>Using data-mining and machine learning to understand the news</h5>
                                     <div class="features">
                                         <article>
                                             <a href="http://www.nrtllc.com/" class="image" target="_blank"><img src="{{url_for('static', filename='assets/images/CB logo.jpg')}}" alt="" height=200 width=200></a>
                                             <div class="inner">
-                                                <p>Designed Python report generating platform to automate and customize internal reporting. Developed experience-based, quantitative productivity expectations for 200+ full-time employees (FTEs). Conducted time and motion study to determine best closing procedure practices to revise training protocol. Reduced commission processing staff needs by 15%. Authored ad-hoc reports to senior leadership including CEO and CFO.</p>
+                                                <p>I set up a webscraperd to pull news from 60 different sources online a an hourly rate to actively track current news stories. Using a NLP toolkit, each story is analyzed by prevalence and term frequency–inverse document frequency. Right now, I am just collecting the information and displaying it with an interactive vectorization map. Once I have enough data, I plan to build a sentiment analysis model to quantify current events' direct impact in the financial markets.</p>
                                             </div>
                                         </article>
                                     </div>
@@ -69,12 +66,7 @@
 
 
         <!-- Scripts -->
-            <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
-            <script src="{{ url_for('static', filename='js/jquery.scrollzer.min.js') }}"></script>
-            <script src="{{ url_for('static', filename='js/jquery.scrolly.min.js') }}"></script>
-            <script src="{{ url_for('static', filename='js/skel.min.js') }}"></script>
-            <script src="{{ url_for('static', filename='js/util.js') }}"></script>
-            <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+            {% include "bottom_script.html" %}
 
     </body>
 </html>
