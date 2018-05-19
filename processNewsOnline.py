@@ -1,3 +1,21 @@
+import pandas as pd
+pd.options.display.max_columns = 200
+pd.options.mode.chained_assignment = None
+from nltk.tokenize import word_tokenize, sent_tokenize
+from nltk.corpus import stopwords
+stop = set(stopwords.words('english'))
+from string import punctuation
+from collections import Counter
+import re
+import numpy as np
+#from tqdm import tqdm_notebook
+#tqdm_notebook().pandas()
+from matplotlib import pyplot as plt
+from functools import reduce
+from sklearn.manifold import TSNE
+from shutil import copyfile
+from IPython.display import display, HTML
+from datetime import datetime
 
 #from bokeh.io import notebook_div
 
@@ -10,31 +28,12 @@
 
 
 def run_main():
-    import pandas as pd
-    pd.options.display.max_columns = 200
-    pd.options.mode.chained_assignment = None
-    from nltk.tokenize import word_tokenize, sent_tokenize
-    from nltk.corpus import stopwords
-    stop = set(stopwords.words('english'))
-    from string import punctuation
-    from collections import Counter
-    import re
-    import numpy as np
-    #from tqdm import tqdm_notebook
-    #tqdm_notebook().pandas()
-    from matplotlib import pyplot as plt
-    from functools import reduce
-    from sklearn.manifold import TSNE
-    from shutil import copyfile
-    from IPython.display import display, HTML
-
+    print('Running at', str(datetime.today()))
     
+    #adjust if change directory info 
     copyfile('/home/shartrich/DataMining/data/news.csv', '/static/Project Files/news.csv')
 
-    print('Running')
-    def count_word(df, word):
-        #for row in df[]
-        pass
+    #print('Running')
 
     def remove_non_ascii(string):
         string = string.replace("“", "'")
@@ -122,7 +121,7 @@ def run_main():
     vectorizer = TfidfVectorizer(min_df=5, analyzer='word', ngram_range=(1, 2), stop_words='english')
     vz = vectorizer.fit_transform(list(data['tokens'].map(lambda tokens: ' '.join(tokens))))
 
-    print(vz.shape)
+    #print(vz.shape)
 
 
     tfidf = dict(zip(vectorizer.get_feature_names(), vectorizer.idf_))
@@ -273,7 +272,7 @@ def run_main():
                                data=all_keywords)
 
 
-    print(keywords_df)
+    #print(keywords_df)
 
 
 
@@ -314,12 +313,7 @@ def run_main():
     #display(HTML('<div style="margin:auto">'+div+'</div>'))
     output_file("static/Project Files/test2.html")
     #show(plot_kmeans)
-
-
     #plt.show()
-
-
-
 
     #print(data.shape)
     #data.category.value_counts(normalize=True).plot(kind='bar', grid=True, figsize=(16, 9))

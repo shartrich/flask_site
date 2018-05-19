@@ -64,7 +64,7 @@ index_header = {'Home': ['active', '/aboutMe'], 'Past Experience': ['', '/pastEx
 experience_header = {'Home': ['', '/aboutMe'], 'Past Experience': ['active', '/pastExperience'], 'Skills': ['', '/skills'], 'Side Projects': ['', '/sideProjects']}
 skills_header = {'Home': ['', '/aboutMe'], 'Past Experience': ['', '/pastExperience'], 'Skills': ['active', '/skills'], 'Side Projects': ['', '/sideProjects']}
 side_projects_header = {'Home': ['', '/aboutMe'], 'Past Experience': ['', '/pastExperience'], 'Skills': ['', '/skills'], 'Side Projects': ['active', '/sideProjects']}
-misc_page_header = 
+misc_page_header = {'Home': ['', '/aboutMe'], 'Past Experience': ['', '/pastExperience'], 'Skills': ['', '/skills'], 'Side Projects': ['', '/sideProjects']}
 
 # side_bar_skills = {'Coding': ["#one", "active"], 'Python Libraries': ['#two', ''], 'Software': ['#three', ''], 'Extras': ['#four', '']}
 # side_bar_past_exp = {'Data Analytics Specialist': ["#one", "active"], 'Operations Data Analyst': ['#two', ''], 'Operations Analyst': ['#three', ''], 'Past Academic Projects': ['#four', '']}
@@ -96,6 +96,10 @@ def skills_page():
 def projects_page():
     return render_template('sideProjects.html', header_info = side_projects_header, side_bar = side_bar_projects)
 
+
+@app.route("/project1")
+def projects_page():
+    return render_template('static/Project Files/test2.html', header_info = misc_page_header, side_bar = side_bar_projects)
 
 
 
