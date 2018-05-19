@@ -312,12 +312,9 @@ def run_main():
     #display(HTML('<div style="margin:auto">'+div+'</div>'))
     output_file("static/Project Files/test2.html")
     show(plot_kmeans)
-    #plt.show()
+    
 
-    #print(data.shape)
-    #data.category.value_counts(normalize=True).plot(kind='bar', grid=True, figsize=(16, 9))
-    #data.description.map(len).hist(figsize=(15, 5), bins=100)
-    #plt.show()
+    copyfile('/home/shartrich/mysite/templates/bokeh plot.html', '/home/shartrich/mysite/static/Project Files/test2.html')
 
 
 
