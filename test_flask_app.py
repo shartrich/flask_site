@@ -1,6 +1,5 @@
 from flask import Flask, redirect, render_template, request, url_for
 from datetime import datetime
-from flask_sqlalchemy import SQLAlchemy
 
 #imports to show project 1
 import processNewsOnline as project1
@@ -11,32 +10,34 @@ app.config["DEBUG"] = True
 
 
 
+test_environ = True
+if not test_environ:
+    from flask_sqlalchemy import SQLAlchemy
+    SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}".format(
+        username="shartrich",
+        password="MySQL123!",
+        hostname='shartrich.mysql.pythonanywhere-services.com',
+        databasename="shartrich$flask_app_db",
+    )
+    app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
+    app.config["SQLALCHEMY_POOL_RECYCLE"] = 299
+    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+    db = SQLAlchemy(app)
+    class Comment(db.Model):
 
-SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}".format(
-    username="shartrich",
-    password="MySQL123!",
-    hostname='shartrich.mysql.pythonanywhere-services.com',
-    databasename="shartrich$flask_app_db",
-)
-app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
-app.config["SQLALCHEMY_POOL_RECYCLE"] = 299
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-db = SQLAlchemy(app)
-class Comment(db.Model):
+        __tablename__ = "comments"
+        id = db.Column(db.Integer, primary_key=True)
+        content = db.Column(db.String(4096))
 
-    __tablename__ = "comments"
-    id = db.Column(db.Integer, primary_key=True)
-    content = db.Column(db.String(4096))
+    @app.route("/sqlTest", methods=["GET", "POST"])
+    def index():
+        if request.method == "GET":
+            return render_template("main_page.html", comments=Comment.query.all())
 
-@app.route("/sqlTest", methods=["GET", "POST"])
-def index():
-    if request.method == "GET":
-        return render_template("main_page.html", comments=Comment.query.all())
-
-    comment = Comment(content=request.form["contents"])
-    db.session.add(comment)
-    db.session.commit()
-    return redirect(url_for('index'))
+        comment = Comment(content=request.form["contents"])
+        db.session.add(comment)
+        db.session.commit()
+        return redirect(url_for('index'))
 
 
 #header_diretions = {'Home': ['', '/aboutMe'], 'Past Experience': ['', '/pastExp'], 'Skills': ['', '/skills']}
