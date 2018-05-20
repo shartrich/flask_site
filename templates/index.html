@@ -28,7 +28,7 @@
 										<h2>Sean Hartrich</h2>
 										<p>Actively seeking new graduate/internship roles for a software engineering/data analytics position.</p>
 									</header>
-									<p>I am looking to plant myself into a software engineering role. While my professional experience focuses on data analytics and operations research, most of my skills will transfer smoothly into an engineering environment.</p>
+									<p>I am looking to plant myself in a fast-paced, technology facing organization. While my professional experience focuses on data analytics and operations research, my skills will transfer smoothly into an engineering environment.</p>
 								</div>
 							</section>
 
@@ -50,24 +50,27 @@
 								</div>
 							</section>
 							<!-- three -->
-							<section id="three">
-								<div class="container">
-									<h3>Skills</h3>
-									<p>I would like to consider myself a man of many talents; I have outlined a few below:</p>
-									<ul class="feature-icons">
-										<li class="fa-code">Writing all the code</li>
-										<li class="fa-cubes">Picking things up and put them down</li>
-										<li class="fa-book">Reading books and stuff</li>
-										<li class="fa-coffee">Drinking all of the coffees</li>
-										<li class="fa-bolt">Shooting lightning bolts like a wizard</li>
-										<li class="fa-users">Secret ninja shadow clone technique</li>
-									</ul>
-									<a href='/skills'><h4 style="color:red;""><u>*Click here for an actual comprehensive list of my skills*</u></h4></a>
-								</div>
-							</section>
+							<div class="container">
+                                    <div style='display:flex;justify-content: space-between;'>
+                                        <h3>Current Events Analysis</h4>
+                                    </div>
+
+                                        <h5>Using data-mining and machine learning to understand the news</h5>
+                                    <div class="features">
+                                        <article>
+                                            <!-- <a href="http://www.nrtllc.com/" class="image" target="_blank"><img src="{{url_for('static', filename='assets/images/CB logo.jpg')}}" alt="" height=200 width=200></a> -->
+                                            <!-- <iframe id="Project1IFrame" title="What's happening in the news?" src="/project1" width="900" height="900" scrolling="no"> </iframe> -->
+                                            {% include "news bokeh.html" %}
+
+                                            <p>I set up a webscraper to pull news from 60 different sources online a an hourly rate to actively track current news stories. Using a NLP toolkit, each story is analyzed by prevalence and term frequency–inverse document frequency. Right now, I am just collecting the information and displaying it with an interactive vectorization map. Once I have enough data, I plan to build a sentiment analysis model to quantify current events' direct impact on the financial markets.</p>
+                                        </article>
+                                    </div>
+                                </div>
+                            </section>
 
 					</div>
 		</div>	
+
 
 
 		{% include "bottom_script.html" %}
