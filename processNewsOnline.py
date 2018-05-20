@@ -224,7 +224,7 @@ def run_main():
 
     distorsions = []
     sil_scores = []
-    k_max = 40
+    k_max = 80
     for k in range(2, k_max):
         kmeans_model = MiniBatchKMeans(n_clusters=k, init='k-means++', n_init=1, random_state=42,
                              init_size=1000, verbose=False, max_iter=1000)
@@ -245,7 +245,7 @@ def run_main():
     # ax2.set_title('Silhouette score vs num of clusters')
     # ax2.grid(True)
 
-    num_clusters = 40
+    num_clusters = 80
     kmeans_model = MiniBatchKMeans(n_clusters=num_clusters, init='k-means++', n_init=1, random_state=42,
                              init_size=1000, batch_size=1000, verbose=False, max_iter=1000, )
     kmeans = kmeans_model.fit(vz)
