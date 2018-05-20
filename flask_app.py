@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 #imports to show project 1
 import processNewsOnline as project1
+import os
 
 
 app = Flask(__name__)
@@ -56,17 +57,24 @@ side_bar_skills = [['Coding', "#one", "active"], ['Python Libraries', '#two', ''
 side_bar_projects = [['Tracking the News', "#one", "active"]]
 
 
+
 @app.route("/hello")
 def index_hello():
     return "Hello World!"
 
 @app.route("/")
 def landing_page_about_me():
-    return render_template('index.html', header_info = index_header, side_bar = side_bar_index)
+    path = os.path.dirname(os.path.abspath(__file__))
+    bokeh_file = path + '//templates//news bokeh.html'
+    project1_last_update_hours = int((datetime.utcnow().timestamp() - os.path.getmtime(bokeh_file)) / 60 / 60)
+    return render_template('index.html', header_info = index_header, side_bar = side_bar_index, bokeh_updated_hours_ago = project1_last_update_hours)
 
 @app.route("/aboutMe")
 def me_page():
-    return render_template('index.html', header_info = index_header, side_bar = side_bar_index)
+    path = os.path.dirname(os.path.abspath(__file__))
+    bokeh_file = path + '//templates//news bokeh.html'
+    project1_last_update_hours = int((datetime.utcnow().timestamp() - os.path.getmtime(bokeh_file)) / 60 / 60)
+    return render_template('index.html', header_info = index_header, side_bar = side_bar_index, bokeh_updated_hours_ago = project1_last_update_hours)
 
 @app.route("/pastExperience")
 def exp_page():
