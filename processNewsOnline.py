@@ -26,6 +26,11 @@ from datetime import datetime
 #add thesaurus check to consolidate similar words
 #track stop word in-betweens, not just after
 
+def shorten_str(text):
+    if len(text) >= 100:
+        return text[:100] + '...'
+    return text
+
 
 def run_main():
     print('Running at', str(datetime.today()))
@@ -191,7 +196,7 @@ def run_main():
     import bokeh.plotting as bp
     from bokeh.models import HoverTool, BoxSelectTool
     from bokeh.plotting import figure, show, output_notebook, reset_output
-    from bokeh.palettes import d3
+    from bokeh.palettes import d3, brewer
     import bokeh.models as bmo
     from bokeh.io import save, output_file
 
@@ -274,6 +279,14 @@ def run_main():
                                data=all_keywords)
 
 
+    s2 = {}
+    for idx, row in keywords_df.iterrows():
+        s2[row.name] = [row.keyword_0, row.keyword_1, row.keyword_2, row.keyword_3, row.keyword_4, row.keyword_5, row.keyword_6, row.keyword_7,row.keyword_8, row.keyword_9]
+
+
+    #keywords_df['Summary'] = keywords_df.map(s2)
+    keywords_df['Summary'] = keywords_df.index.to_series().map(s2)
+
     #print(keywords_df)
 
 
@@ -286,27 +299,40 @@ def run_main():
         kmeans_df = pd.DataFrame(tsne_kmeans, columns=['x', 'y'])
         kmeans_df['cluster'] = kmeans_clusters
         kmeans_df['cluster'] = kmeans_df['cluster'].map(str)
-        kmeans_df['description'] = data['description']
+        kmeans_df['headline'] = data['description']
+        kmeans_df['description'] = kmeans_df['headline'].map(shorten_str)
+
         kmeans_df['category'] = data['category']
         kmeans_df.to_csv('static/Project Files/tsne_kmeans.csv', index=False, encoding='utf-8')
     else:
         kmeans_df = pd.read_csv('static/Project Files/tsne_kmeans.csv')
         kmeans_df['cluster'] = kmeans_df['cluster'].map(str)
 
+
+
+    s = {}
+    for idx, row in enumerate(keywords_df['Summary']):
+        s[idx] = row
+        
+
+    kmeans_df['int_vals'] = kmeans_df['cluster'].map(int)
+    kmeans_df['Desc'] = kmeans_df['int_vals'].map(s)
+
+
     reset_output()
     output_notebook()
-    plot_kmeans = bp.figure(plot_width=700, plot_height=600, title="KMeans clustering of the news",
+    plot_kmeans = bp.figure(plot_width=700, plot_height=600, title="KMeans Clustering of the News",
         tools="pan,wheel_zoom,box_zoom,reset,hover,previewsave",
         x_axis_type=None, y_axis_type=None, min_border=1)
 
-    palette = d3['Category20'][20] + d3['Category20b'][20]
-    color_map = bmo.CategoricalColorMapper(factors=kmeans_df['cluster'].unique(), palette=palette)
+    palette = d3['Category10'][len(tsne_tfidf_df['category'].unique())]
+    color_map = bmo.CategoricalColorMapper(factors=tsne_tfidf_df['category'].map(str).unique(), palette=palette)
 
     plot_kmeans.scatter('x', 'y', source=kmeans_df,
                         color={'field': 'cluster', 'transform': color_map},
                         legend='cluster')
     hover = plot_kmeans.select(dict(type=HoverTool))
-    hover.tooltips={"description": "@description", "cluster": "@cluster", "category": "@category"}
+    hover.tooltips={"Category": "@category", "Cluster": "@Desc", "Description": "@description"}
 
 
     #display(HTML('<div style="margin:auto">'+div+'</div>'))
