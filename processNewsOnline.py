@@ -337,10 +337,10 @@ def run_main():
 
     #display(HTML('<div style="margin:auto">'+div+'</div>'))
     output_file("static/Project Files/test2.html")
-    show(plot_kmeans)
+    #show(plot_kmeans)
 
-
-    copyfile('/home/shartrich/mysite/templates/news bokeh.html', '/home/shartrich/mysite/static/Project Files/test2.html')
+    copyfile('/home/shartrich/mysite/static/Project Files/test2.html', '/home/shartrich/mysite/templates/news bokeh.html')
+    #copyfile('/home/shartrich/mysite/templates/news bokeh.html', '/home/shartrich/mysite/static/Project Files/test2.html')
 
 
 
