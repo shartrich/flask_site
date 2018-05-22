@@ -313,7 +313,7 @@ def run_main():
     s = {}
     for idx, row in enumerate(keywords_df['Summary']):
         s[idx] = row
-        
+
 
     kmeans_df['int_vals'] = kmeans_df['cluster'].map(int)
     kmeans_df['Desc'] = kmeans_df['int_vals'].map(s)
@@ -326,7 +326,7 @@ def run_main():
         x_axis_type=None, y_axis_type=None, min_border=1)
 
     palette = d3['Category20'][20] + d3['Category20b'][20] + d3['Category20c'][20] + brewer['BrBG'][9] + brewer['RdYlBu'][11]
-color_map = bmo.CategoricalColorMapper(factors=kmeans_df['cluster'].unique(), palette=palette)
+    color_map = bmo.CategoricalColorMapper(factors=kmeans_df['cluster'].unique(), palette=palette)
 
     plot_kmeans.scatter('x', 'y', source=kmeans_df,
                         color={'field': 'cluster', 'transform': color_map},
@@ -338,7 +338,7 @@ color_map = bmo.CategoricalColorMapper(factors=kmeans_df['cluster'].unique(), pa
     #display(HTML('<div style="margin:auto">'+div+'</div>'))
     output_file("static/Project Files/test2.html")
     show(plot_kmeans)
-    
+
 
     copyfile('/home/shartrich/mysite/templates/news bokeh.html', '/home/shartrich/mysite/static/Project Files/test2.html')
 
