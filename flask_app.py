@@ -1,26 +1,42 @@
-from flask import Flask, redirect, render_template, request, url_for
+from flask import Flask, redirect, render_template, request, url_for, jsonify
 from datetime import datetime
 from flask_sqlalchemy import SQLAlchemy
-
-#imports to show project 1
-import processNewsOnline as project1
 import os
 import urllib.request
 import re
+
+#imports to show project 1
+import processNewsOnline as project1
+
 
 
 
 
 
 def grab_stock(ticker = 'ZUO'):
+    react_ids = {'Price': 14, 'Prev Close': 15, 'Open': 20, 'Volume': 43, 'Avg Volume': 48, 
+                'Beta': 61, 'PE Ratio (TTM)': 66, 'EPS (TTM)': 71, '1y Target Est': 90,
+                "Day's Range": 34, "52 Week Range": 38, "Market Cap": 56, 'Ex-Dividend Date': 85}
+
     output = {}
+    output['Symbol'] = ticker.upper()
+
+    #return yahoo finance of ticker as data
     url = "https://finance.yahoo.com/quote/%s?p=%s" % (ticker, ticker)
     request = urllib.request.urlopen(url)
     data = request.read().decode()
-    pat = re.compile(r'(?<=data-reactid="14">)(\d|,|\.)+?(?=<)')
-    matches = re.search(pat, data)
-    output['Price'] = matches.group()
-    return output
+
+    # test_taken = []
+
+    for key in react_ids.keys():
+        pat = re.compile(r'(?<=data-reactid="' + str(react_ids[key]) + '">)(\d|B|\+| |\-|\-|,|\.)+?(?=<)')
+        matches = re.search(pat, data)
+        try:
+            output[key] = matches.group()
+        except AttributeError:
+            output[key] = 'ERROR'
+
+    return jsonify(output)
 
 
 app = Flask(__name__)

@@ -1,11 +1,49 @@
-from flask import Flask, redirect, render_template, request, url_for
+from flask import Flask, redirect, render_template, request, url_for, jsonify
 from datetime import datetime
-
-#imports to show project 1
-import processNewsOnline as project1
 import os
 import urllib.request
 import re
+
+#imports to show project 1
+import processNewsOnline as project1
+
+
+def grab_stock(ticker = 'ZUO'):
+    react_ids = {'Price': 14, 'Prev Close': 15, 'Open': 20, 'Volume': 43, 'Avg Volume': 48, 'Beta': 61, 'PE Ratio (TTM)': 66, 'EPS (TTM)': 71, '1y Target Est': 90,
+                "Day's Range": 34, "52 Week Range": 38, "Market Cap": 56, 'Ex-Dividend Date': 85}
+
+    output = {}
+    output['Symbol'] = ticker.upper()
+
+    #return yahoo finance of ticker as data
+    url = "https://finance.yahoo.com/quote/%s?p=%s" % (ticker, ticker)
+    request = urllib.request.urlopen(url)
+    data = request.read().decode()
+
+    # test_taken = []
+
+    for key in react_ids.keys():
+        pat = re.compile(r'(?<=data-reactid="' + str(react_ids[key]) + '">)(\d|B|\+| |\-|\-|,|\.)+?(?=<)')
+        matches = re.search(pat, data)
+        try:
+            output[key] = matches.group()
+        except AttributeError:
+            output[key] = 'ERROR'
+        # test_taken.append(react_ids[key])
+
+    # for idx in range(200):
+    #     if  idx in test_taken:
+    #         pass
+    #     else:
+    #         pat = re.compile(r'(?<=data-reactid="' + str(idx) + '">)(\d|B|\+| |\-|\-|,|\.)+?(?=<)')
+    #         try:
+    #             matches = re.search(pat, data)
+    #             output[idx] = matches.group()
+    #         except:
+    #             output[idx] = 'ERROR'
+    
+    return jsonify(output)
+
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
@@ -43,7 +81,6 @@ if not test_environ:
 
 
 
-
 #header_diretions = {'Home': ['', '/aboutMe'], 'Past Experience': ['', '/pastExp'], 'Skills': ['', '/skills']}
 index_header = {'Home': ['active', '/aboutMe'], 'Past Experience': ['', '/pastExperience'], 'Skills': ['', '/skills'], 'Side Projects': ['', '/sideProjects']}
 experience_header = {'Home': ['', '/aboutMe'], 'Past Experience': ['active', '/pastExperience'], 'Skills': ['', '/skills'], 'Side Projects': ['', '/sideProjects']}
@@ -51,15 +88,14 @@ skills_header = {'Home': ['', '/aboutMe'], 'Past Experience': ['', '/pastExperie
 side_projects_header = {'Home': ['', '/aboutMe'], 'Past Experience': ['', '/pastExperience'], 'Skills': ['', '/skills'], 'Side Projects': ['active', '/sideProjects']}
 misc_page_header = {'Home': ['', '/aboutMe'], 'Past Experience': ['', '/pastExperience'], 'Skills': ['', '/skills'], 'Side Projects': ['', '/sideProjects']}
 
-
+# side_bar_skills = {'Coding': ["#one", "active"], 'Python Libraries': ['#two', ''], 'Software': ['#three', ''], 'Extras': ['#four', '']}
+# side_bar_past_exp = {'Data Analytics Specialist': ["#one", "active"], 'Operations Data Analyst': ['#two', ''], 'Operations Analyst': ['#three', ''], 'Past Academic Projects': ['#four', '']}
+# side_bar_index = {'About': ["#one", "active"], 'Education': ['#two', ''], 'Skills': ['#three', '']}
 
 side_bar_index = [['About', "#one", "active"], ['Education', '#two', ''], ['Side Projects', '#three', '']]
 side_bar_past_exp = [['Data Analytics Specialist', "#one", "active"], ['Operations Data Analyst', '#two', ''], ['Operations Analyst', '#three', ''], ['Past Academic Projects', '#four', '']]
 side_bar_skills = [['Coding', "#one", "active"], ['Python Libraries', '#two', ''], ['Software', '#three', ''], ['Extras', '#four', '']]
 side_bar_projects = [['Tracking the News', "#one", "active"]]
-
-
-#bokeh_file = os.getcwd() + '//templates//news bokeh.html'
 
 
 
@@ -100,14 +136,11 @@ def projects_page_1():
     #return render_template('/home/shartrich/mysite/static/Project Files/test2.html', header_info = misc_page_header, side_bar = side_bar_projects)
 
 
-
 @app.route("/stock_api")
 def test_api():
         ticker =  request.args.get('stock', default = 'ZUO', type = str)
-
-        request = urllib.request.urlopen("https://finance.yahoo.com/quote/%s?p=%s") % (ticker)
-
-
+        #request = urllib.request.urlopen("https://finance.yahoo.com/quote/%s?p=%s") % (ticker)
+        return grab_stock(ticker)
 
 
 
