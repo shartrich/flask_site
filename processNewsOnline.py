@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+import os
 import pandas as pd
 pd.options.display.max_columns = 200
 pd.options.mode.chained_assignment = None
@@ -37,7 +39,8 @@ def run_main():
 
     #adjust if change directory info
     #copyfile('/home/shartrich/DataMining/data/news.csv', '/static/Project Files/news.csv')
-    copyfile('/home/shartrich/DataMining/data/news.csv', 'static/Project Files/news.csv')
+    current_directory = os.path.dirname(os.path.abspath(__file__))
+    copyfile('//home//shartrich//DataMining//data//news.csv', current_directory + '//static//Project Files//news.csv')
 
     #print('Running')
 
@@ -97,7 +100,7 @@ def run_main():
 
     stop_words = []
 
-    with open('static/Project Files/stopwords.txt', 'r') as f:
+    with open(current_directory + '//static//Project Files//stopwords.txt', 'r') as f:
         for l in f.readlines():
             stop_words.append(l.replace('\n', ''))
 
@@ -176,10 +179,10 @@ def run_main():
         tsne_tfidf_df.columns = ['x', 'y']
         tsne_tfidf_df['category'] = data['category']
         tsne_tfidf_df['description'] = data['description']
-        tsne_tfidf_df.to_csv('static/Project Files/tsne_tfidf.csv', encoding='utf-8', index=False)
+        tsne_tfidf_df.to_csv(current_directory +'/static/Project Files/tsne_tfidf.csv', encoding='utf-8', index=False)
     else:
     # or import the dataset directly
-        tsne_tfidf_df = pd.read_csv('static/Project Files/tsne_tfidf.csv')
+        tsne_tfidf_df = pd.read_csv(current_directory + '/static/Project Files/tsne_tfidf.csv')
 
 
 
@@ -303,9 +306,9 @@ def run_main():
         kmeans_df['description'] = kmeans_df['headline'].map(shorten_str)
 
         kmeans_df['category'] = data['category']
-        kmeans_df.to_csv('static/Project Files/tsne_kmeans.csv', index=False, encoding='utf-8')
+        kmeans_df.to_csv(current_directory + '/static/Project Files/tsne_kmeans.csv', index=False, encoding='utf-8')
     else:
-        kmeans_df = pd.read_csv('static/Project Files/tsne_kmeans.csv')
+        kmeans_df = pd.read_csv(current_directory + '/static/Project Files/tsne_kmeans.csv')
         kmeans_df['cluster'] = kmeans_df['cluster'].map(str)
 
 
@@ -336,11 +339,14 @@ def run_main():
 
 
     #display(HTML('<div style="margin:auto">'+div+'</div>'))
-    output_file("static/Project Files/test2.html")
+    output_file(current_directory + "//static//Project Files//test2.html")
     #show(plot_kmeans)
 
-    copyfile('/home/shartrich/mysite/static/Project Files/test2.html', '/home/shartrich/mysite/templates/news bokeh.html')
-    #copyfile('/home/shartrich/mysite/templates/news bokeh.html', '/home/shartrich/mysite/static/Project Files/test2.html')
+    copyfile('//home//shartrich//mysite//static//Project Files//test2.html', '//home//shartrich//mysite//templates//news bokeh.html')
+    #copyfile('//home/shartrich/mysite/templates/news bokeh.html', '/home/shartrich/mysite/static/Project Files/test2.html')
+
+
+    print('Complete!')
 
 
 
