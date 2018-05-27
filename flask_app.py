@@ -5,12 +5,25 @@ from flask_sqlalchemy import SQLAlchemy
 #imports to show project 1
 import processNewsOnline as project1
 import os
+import urllib.request
+import re
+
+
+
+
+
+def grab_stock(ticker = 'ZUO'):
+    url = "https://finance.yahoo.com/quote/%s?p=%s" % (ticker, ticker)
+    request = urllib.request.urlopen(url)
+    data = request.read().decode()
+    pat = re.compile(r'(?<=data-reactid="14">)(\d|,|\.)+?(?=<)')
+    matches = re.search(pat, data)
+    current_price = matches.group()
+    return current_price
 
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
-
-
 
 
 SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}".format(
@@ -95,6 +108,11 @@ def projects_page_1():
     #return render_template('/home/shartrich/mysite/static/Project Files/test2.html', header_info = misc_page_header, side_bar = side_bar_projects)
 
 
+@app.route("/stock_api")
+def test_api():
+        ticker =  request.args.get('stock', default = 'ZUO', type = str)
+        #request = urllib.request.urlopen("https://finance.yahoo.com/quote/%s?p=%s") % (ticker)
+        return grab_stock(ticker)
 
 
 

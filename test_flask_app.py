@@ -4,7 +4,8 @@ from datetime import datetime
 #imports to show project 1
 import processNewsOnline as project1
 import os
-
+import urllib.request
+import re
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
@@ -41,6 +42,8 @@ if not test_environ:
         return redirect(url_for('index'))
 
 
+
+
 #header_diretions = {'Home': ['', '/aboutMe'], 'Past Experience': ['', '/pastExp'], 'Skills': ['', '/skills']}
 index_header = {'Home': ['active', '/aboutMe'], 'Past Experience': ['', '/pastExperience'], 'Skills': ['', '/skills'], 'Side Projects': ['', '/sideProjects']}
 experience_header = {'Home': ['', '/aboutMe'], 'Past Experience': ['active', '/pastExperience'], 'Skills': ['', '/skills'], 'Side Projects': ['', '/sideProjects']}
@@ -48,9 +51,7 @@ skills_header = {'Home': ['', '/aboutMe'], 'Past Experience': ['', '/pastExperie
 side_projects_header = {'Home': ['', '/aboutMe'], 'Past Experience': ['', '/pastExperience'], 'Skills': ['', '/skills'], 'Side Projects': ['active', '/sideProjects']}
 misc_page_header = {'Home': ['', '/aboutMe'], 'Past Experience': ['', '/pastExperience'], 'Skills': ['', '/skills'], 'Side Projects': ['', '/sideProjects']}
 
-# side_bar_skills = {'Coding': ["#one", "active"], 'Python Libraries': ['#two', ''], 'Software': ['#three', ''], 'Extras': ['#four', '']}
-# side_bar_past_exp = {'Data Analytics Specialist': ["#one", "active"], 'Operations Data Analyst': ['#two', ''], 'Operations Analyst': ['#three', ''], 'Past Academic Projects': ['#four', '']}
-# side_bar_index = {'About': ["#one", "active"], 'Education': ['#two', ''], 'Skills': ['#three', '']}
+
 
 side_bar_index = [['About', "#one", "active"], ['Education', '#two', ''], ['Side Projects', '#three', '']]
 side_bar_past_exp = [['Data Analytics Specialist', "#one", "active"], ['Operations Data Analyst', '#two', ''], ['Operations Analyst', '#three', ''], ['Past Academic Projects', '#four', '']]
@@ -97,6 +98,17 @@ def projects_page_main():
 def projects_page_1():
     return render_template('news bokeh.html', header_info = misc_page_header, side_bar = side_bar_projects)
     #return render_template('/home/shartrich/mysite/static/Project Files/test2.html', header_info = misc_page_header, side_bar = side_bar_projects)
+
+
+
+@app.route("/stock_api")
+def test_api():
+        ticker =  request.args.get('stock', default = 'ZUO', type = str)
+
+        request = urllib.request.urlopen("https://finance.yahoo.com/quote/%s?p=%s") % (ticker)
+
+
+
 
 
 
