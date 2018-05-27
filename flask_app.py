@@ -13,13 +13,14 @@ import re
 
 
 def grab_stock(ticker = 'ZUO'):
+    output = {}
     url = "https://finance.yahoo.com/quote/%s?p=%s" % (ticker, ticker)
     request = urllib.request.urlopen(url)
     data = request.read().decode()
     pat = re.compile(r'(?<=data-reactid="14">)(\d|,|\.)+?(?=<)')
     matches = re.search(pat, data)
-    current_price = matches.group()
-    return current_price
+    output['Price'] = matches.group()
+    return output
 
 
 app = Flask(__name__)
