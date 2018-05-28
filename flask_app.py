@@ -34,7 +34,8 @@ def grab_stock(ticker = 'ZUO'):
         try:
             output[key] = matches.group()
         except AttributeError:
-            output[key] = 'ERROR'
+            #output[key] = 'ERROR'
+            pass
 
     return jsonify(output)
 

@@ -28,7 +28,8 @@ def grab_stock(ticker = 'ZUO'):
         try:
             output[key] = matches.group()
         except AttributeError:
-            output[key] = 'ERROR'
+            #output[key] = 'ERROR'
+            pass
         # test_taken.append(react_ids[key])
 
     # for idx in range(200):
