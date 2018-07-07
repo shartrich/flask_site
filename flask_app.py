@@ -76,11 +76,11 @@ def index():
 
 
 #header_diretions = {'Home': ['', '/aboutMe'], 'Past Experience': ['', '/pastExp'], 'Skills': ['', '/skills']}
-index_header = {'Home': ['active', '/aboutMe'], 'Past Experience': ['', '/pastExperience'], 'Skills': ['', '/skills']}#, 'Side Projects': ['', '/sideProjects']}
-experience_header = {'Home': ['', '/aboutMe'], 'Past Experience': ['active', '/pastExperience'], 'Skills': ['', '/skills']}#, 'Side Projects': ['', '/sideProjects']}
-skills_header = {'Home': ['', '/aboutMe'], 'Past Experience': ['', '/pastExperience'], 'Skills': ['active', '/skills']}#, 'Side Projects': ['', '/sideProjects']}
-side_projects_header = {'Home': ['', '/aboutMe'], 'Past Experience': ['', '/pastExperience'], 'Skills': ['', '/skills']}#, 'Side Projects': ['active', '/sideProjects']}
-misc_page_header = {'Home': ['', '/aboutMe'], 'Past Experience': ['', '/pastExperience'], 'Skills': ['', '/skills']}#, 'Side Projects': ['', '/sideProjects']}
+index_header = {'Home': ['active', '/'], 'Past Experience': ['', '/pastExperience'], 'Skills': ['', '/skills']}#, 'Side Projects': ['', '/sideProjects']}
+experience_header = {'Home': ['', '/'], 'Past Experience': ['active', '/pastExperience'], 'Skills': ['', '/skills']}#, 'Side Projects': ['', '/sideProjects']}
+skills_header = {'Home': ['', '/'], 'Past Experience': ['', '/pastExperience'], 'Skills': ['active', '/skills']}#, 'Side Projects': ['', '/sideProjects']}
+side_projects_header = {'Home': ['', '/'], 'Past Experience': ['', '/pastExperience'], 'Skills': ['', '/skills']}#, 'Side Projects': ['active', '/sideProjects']}
+misc_page_header = {'Home': ['', '/'], 'Past Experience': ['', '/pastExperience'], 'Skills': ['', '/skills']}#, 'Side Projects': ['', '/sideProjects']}
 
 # side_bar_skills = {'Coding': ["#one", "active"], 'Python Libraries': ['#two', ''], 'Software': ['#three', ''], 'Extras': ['#four', '']}
 # side_bar_past_exp = {'Data Analytics Specialist': ["#one", "active"], 'Operations Data Analyst': ['#two', ''], 'Operations Analyst': ['#three', ''], 'Past Academic Projects': ['#four', '']}
