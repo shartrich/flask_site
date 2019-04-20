@@ -1,0 +1,1 @@
+"""Configs folder to hold settings and stuff"""

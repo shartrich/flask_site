@@ -3,3 +3,7 @@
 __pycache__
 static/Project Files
 templates/news bokeh.html
+node_modules
+.vscode
+.env
+pylintrc
