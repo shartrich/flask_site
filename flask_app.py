@@ -4,10 +4,10 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 
 
-import processNewsOnline as project1
 from utils.configs.settings import DB_USERNAME, DB_PASSWORD, DB_DATABASE, DB_HOST, DB_TABLE, \
     PORT, IS_TEST_INSTANCE
 from utils.apis.stocks import grab_stock
+from utils.apis.news import get_latest_bokeh_file
 from utils.configs import website_data
 
 
@@ -79,7 +79,9 @@ def skills_page():
 
 @app.route("/project1")
 def projects_page_1():
-    return render_template('kmeans.html')
+    file_name = get_latest_bokeh_file()
+    return render_template(file_name)
+    # return "Hello World!"
 
 
 @app.route("/stock_api")
