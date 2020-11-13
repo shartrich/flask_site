@@ -55,7 +55,9 @@ def handle_database_request(request):
             conn.close()
             response['results'] = cursorObject.fetchall()
     except:
-        response['error'] = sys.exc_info()[0]
+        print('DATABASE ERROR:')
+        print(sys.exc_info()[0])
+        response['error'] = str(sys.exc_info()[0])
         response['success'] = False
     return response
 
