@@ -43,7 +43,6 @@ def handle_database_request(request):
     
     print('query:', query)
     response = {'success': True}
-    return response
     try:
         if 'select' in query:
             conn = sql_engine()
