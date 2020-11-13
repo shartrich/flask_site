@@ -5,27 +5,17 @@ import os
 
 
 from utils.configs.settings import DB_USERNAME, DB_PASSWORD, DB_DATABASE, DB_HOST, DB_TABLE, \
-    PORT, IS_TEST_INSTANCE, SERVER_USERNAME, SERVER_PASSWORD
+    PORT, IS_TEST_INSTANCE
 from utils.apis.stocks import grab_stock
 from utils.apis.news import get_latest_bokeh_file
 from utils.configs import website_data
 from utils.server.database import handle_database_request
-from flask_httpauth import HTTPBasicAuth
-from werkzeug.security import check_password_hash
+from utils.server.authentication import authenticate_request
 
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
-auth = HTTPBasicAuth()
 
-
-users = { SERVER_USERNAME: SERVER_PASSWORD }
-@auth.verify_password
-def verify_password(username, password):
-    if username in users and \
-            check_password_hash(users.get(username), password):
-        return True
-    return False
 
 SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}".format(
     username=DB_USERNAME,
@@ -99,8 +89,10 @@ def test_api():
 
 
 @app.route("/database")
-@auth.login_required
 def database_request():
+    authorized, auth_result = authenticate_request(request)
+    if not authorized:
+        return jsonify(auth_result)
     return jsonify(handle_database_request(request))
 
 

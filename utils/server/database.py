@@ -30,16 +30,20 @@ def sql_engine(database=DB_DATABASE):
         # echo=True
         )
 
+def get_query_from_body(request):
+    body = request.json()
+    print(body)
+    return body.get('query', 'SHOW DATABSES;')
+
+
 def handle_database_request(request):
-    query = request.args.get('query', default='SHOW DATABSES;', type=str)
-    print(request.method)
-    if request.method == 'POST':
-        body = request.json()
-        print(body)
-        query = body.get(query, 'SHOW DATABSES;')
+    query = request.args.get('query', default=None, type=str)
+    if not query:
+        query = get_query_from_body(request)
     
     print('query:', query)
     response = {'success': True}
+    return response
     try:
         if 'select' in query:
             conn = sql_engine()
