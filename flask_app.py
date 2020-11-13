@@ -5,18 +5,27 @@ import os
 
 
 from utils.configs.settings import DB_USERNAME, DB_PASSWORD, DB_DATABASE, DB_HOST, DB_TABLE, \
-    PORT, IS_TEST_INSTANCE
+    PORT, IS_TEST_INSTANCE, SERVER_USERNAME, SERVER_PASSWORD
 from utils.apis.stocks import grab_stock
 from utils.apis.news import get_latest_bokeh_file
 from utils.configs import website_data
-
-
-def grab_distance(city1, city2):
-    pass
+from utils.server.database import handle_database_request
+from flask_httpauth import HTTPBasicAuth
+from werkzeug.security import check_password_hash
 
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
+auth = HTTPBasicAuth()
+
+
+users = { SERVER_USERNAME: SERVER_PASSWORD }
+@auth.verify_password
+def verify_password(username, password):
+    if username in users and \
+            check_password_hash(users.get(username), password):
+        return True
+    return False
 
 SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}".format(
     username=DB_USERNAME,
@@ -81,14 +90,18 @@ def skills_page():
 def projects_page_1():
     file_name = get_latest_bokeh_file()
     return render_template(file_name)
-    # return "Hello World!"
 
 
 @app.route("/stock_api")
 def test_api():
-        ticker = request.args.get('stock', default='ZUO', type=str)
-        return jsonify(grab_stock(ticker))
+    ticker = request.args.get('stock', default='ZUO', type=str)
+    return jsonify(grab_stock(ticker))
 
+
+@app.route("/database")
+@auth.login_required
+def database_request():
+    return jsonify(handle_database_request(request))
 
 
 if __name__ == '__main__':

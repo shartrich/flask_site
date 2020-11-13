@@ -29,8 +29,8 @@ PORT = int(getenv('PORT'))
 IS_TEST_INSTANCE = getenv('IS_TEST_INSTANCE')
 
 # server authentication items
-# SERVER_USERNAME = getenv('SERVER_USERNAME')
-# SERVER_PASSWORD = getenv('SERVER_PASSWORD')
+SERVER_USERNAME = getenv('SERVER_USERNAME')
+SERVER_PASSWORD = getenv('SERVER_PASSWORD')
 
 
 # if a query attempts any of these, don't allow
