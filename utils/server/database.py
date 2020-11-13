@@ -57,7 +57,9 @@ def handle_database_request(request):
     except:
         print('DATABASE ERROR:')
         print(sys.exc_info()[0])
-        response['error'] = str(sys.exc_info()[0])
+        print(sys.exc_info()[1])
+        print(sys.exc_info()[2])
+        response['error'] = str(sys.exc_info())
         response['success'] = False
     return response
 
